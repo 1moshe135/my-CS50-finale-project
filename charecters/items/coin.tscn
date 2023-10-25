@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://pibtlt87k5n1"]
+
+[ext_resource type="Texture2D" uid="uid://chhivrh7mlomb" path="res://assets/textures/tiles.png" id="1_n8xfy"]
+[ext_resource type="Script" path="res://scripts/other/coin.gd" id="1_uqfam"]
+[ext_resource type="AudioStream" uid="uid://2qafjnv416db" path="res://assets/sounds/new_meme_sounds/super-mario-coin-sound.mp3" id="3_wn8tv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xykom"]
+radius = 11.0
+height = 34.0
+
+[node name="coin" type="Area2D"]
+script = ExtResource("1_uqfam")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_n8xfy")
+hframes = 33
+vframes = 28
+frame = 57
+
+[node name="coin_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xykom")
+
+[node name="coinsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wn8tv")
+volume_db = 4.333
+
+[connection signal="body_entered" from="." to="." method="_on_coin_collision_area_entered"]

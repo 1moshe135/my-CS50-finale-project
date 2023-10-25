@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://codv8ws8h046"]
+
+[ext_resource type="Script" path="res://scripts/charecters/bosss/umi.gd" id="1_aehf2"]
+[ext_resource type="Texture2D" uid="uid://0pkecuqnlq8g" path="res://assets/textures/amini.png" id="2_ebpit"]
+[ext_resource type="Texture2D" uid="uid://822v18e74s2i" path="res://assets/textures/umi_dead.png" id="2_imiij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cgan"]
+atlas = ExtResource("2_ebpit")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ct3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_imiij")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cgan")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wiov"]
+size = Vector2(73, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ijn"]
+size = Vector2(84, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov8ks"]
+size = Vector2(91, 30.25)
+
+[node name="umi" type="CharacterBody2D"]
+script = ExtResource("1_aehf2")
+
+[node name="Arielnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1ct3d")
+animation = &"dead"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 9.5)
+shape = SubResource("RectangleShape2D_2wiov")
+
+[node name="player_dead" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dead"]
+position = Vector2(2, 7)
+shape = SubResource("RectangleShape2D_j5ijn")
+
+[node name="umi_dead" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="umi_dead"]
+position = Vector2(2, -44.875)
+shape = SubResource("RectangleShape2D_ov8ks")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="summon" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="player_dead" to="." method="_on_player_dead_body_entered"]
+[connection signal="body_entered" from="umi_dead" to="." method="_on_umi_dead_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="summon" to="." method="_on_summon_timeout"]

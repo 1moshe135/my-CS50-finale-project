@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2qpdjbaydq6j"]
+
+[ext_resource type="Script" path="res://scripts/charecters/foloowCamera2D.gd" id="1_chlb1"]
+[ext_resource type="TileSet" uid="uid://cxib7gcqkoe4s" path="res://assets/engine recouces/tilemap.tres" id="2_suuim"]
+[ext_resource type="PackedScene" uid="uid://d2erecrf1dthl" path="res://charecters/player/da_shaul.tscn" id="3_j1upq"]
+[ext_resource type="PackedScene" uid="uid://c4lmmg2osx1db" path="res://charecters/items/next_lvl_door.tscn" id="4_vtquw"]
+[ext_resource type="PackedScene" uid="uid://dogwkgaxgv62x" path="res://scenes/other/canvas_layer.tscn" id="5_fp18a"]
+[ext_resource type="PackedScene" uid="uid://dp5is6j1sh55x" path="res://charecters/mobs/booger_shoother.tscn" id="6_w4m7x"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(481, 275)
+limit_left = 0
+script = ExtResource("1_chlb1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(2, 2)
+tile_set = ExtResource("2_suuim")
+format = 2
+layer_0/tile_data = PackedInt32Array(983040, 196609, 20, 1048576, 196609, 21, 983041, 196609, 20, 1048577, 196609, 21, 983042, 196609, 20, 1048578, 196609, 21, 983043, 196609, 20, 1048579, 196609, 21, 983044, 196609, 20, 1048580, 196609, 21, 983045, 196609, 20, 1048581, 196609, 21, 983046, 196609, 20, 1048582, 196609, 21, 983047, 196609, 20, 1048583, 196609, 21, 983048, 196609, 20, 1048584, 196609, 21, 983049, 196609, 20, 1048585, 196609, 21, 983050, 196609, 20, 1048586, 196609, 21, 983051, 196609, 20, 1048587, 196609, 21, 983052, 196609, 20, 1048588, 196609, 21, 983053, 196609, 20, 1048589, 196609, 21, 983054, 196609, 20, 1048590, 196609, 21, 983055, 196609, 20, 1048591, 196609, 21, 983056, 196609, 20, 1048592, 196609, 21, 983057, 196609, 20, 1048593, 196609, 21, 983058, 196609, 20, 1048594, 196609, 21, 983059, 196609, 20, 1048595, 196609, 21, 983060, 196609, 20, 1048596, 196609, 21, 983061, 196609, 20, 1048597, 196609, 21, 983062, 196609, 20, 1048598, 196609, 21, 983063, 196609, 20, 1048599, 196609, 21, 983064, 196609, 20, 1048600, 196609, 21, 983065, 196609, 20, 1048601, 196609, 21, 983066, 196609, 20, 1048602, 196609, 21, 983067, 196609, 20, 1048603, 196609, 21, 983068, 196609, 20, 1048604, 196609, 21, 983069, 196609, 20, 1048605, 196609, 21, 851971, 1179648, 8, 851970, 1179648, 8, 851972, 1179648, 8, 851973, 1179648, 8, 851974, 1179648, 8, 851975, 1179648, 8, 851976, 1179648, 8, 851977, 1179648, 8, 851978, 1179648, 8, 851979, 1179648, 8, 851994, 1179648, 8, 851995, 1179648, 8, 851996, 1245184, 8, 851980, 1179648, 8, 851981, 1179648, 8, 851982, 1179648, 8, 851983, 1179648, 8, 851984, 1179648, 8, 851985, 1179648, 8, 851986, 1179648, 8, 851987, 1179648, 8, 851988, 1179648, 8, 851989, 1179648, 8, 851990, 1179648, 8, 851991, 1179648, 8, 851992, 1179648, 8, 851993, 1179648, 8, 851969, 1114112, 8, 786433, 0, 7, 786460, 0, 7)
+
+[node name="DA SHAUL" parent="." instance=ExtResource("3_j1upq")]
+position = Vector2(193, 377)
+
+[node name="door2" parent="." instance=ExtResource("4_vtquw")]
+position = Vector2(9344, 399)
+scene = "res://scenes/other/start_screen.tscn"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_fp18a")]
+
+[node name="lil_kid" parent="." instance=ExtResource("6_w4m7x")]
+position = Vector2(645, 392)

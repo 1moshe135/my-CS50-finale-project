@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://e0s1uddandgd"]
+
+[ext_resource type="Script" path="res://scripts/charecters/lil_kid.gd" id="1_6t87n"]
+[ext_resource type="Texture2D" uid="uid://cg7hfe85qbcb3" path="res://assets/textures/lil_kid_blue.png" id="2_83w1d"]
+[ext_resource type="AudioStream" uid="uid://dl31fpawdlao8" path="res://assets/sounds/new_meme_sounds/windows_off.mp3" id="3_rrcxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pchd"]
+size = Vector2(22.4518, 29.258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixqhs"]
+size = Vector2(29, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfxy8"]
+size = Vector2(35, 22)
+
+[node name="lil_kid" type="CharacterBody2D"]
+script = ExtResource("1_6t87n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(1.65413, 1.64205)
+texture = ExtResource("2_83w1d")
+
+[node name="wall_check" type="RayCast2D" parent="."]
+target_position = Vector2(-16, 0)
+collide_with_areas = true
+
+[node name="wall_check2" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.499998, 0.499998)
+rotation = 3.14159
+scale = Vector2(1.29165, 0.922824)
+shape = SubResource("RectangleShape2D_1pchd")
+
+[node name="kid_dead" type="Area2D" parent="."]
+position = Vector2(0, -15)
+collision_layer = 3
+collision_mask = 3
+
+[node name="kid_dead_collision" type="CollisionShape2D" parent="kid_dead"]
+position = Vector2(-1, -18)
+shape = SubResource("RectangleShape2D_ixqhs")
+
+[node name="player_dead" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dead"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_bfxy8")
+
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rrcxs")
+volume_db = -20.243
+
+[connection signal="body_entered" from="kid_dead" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="player_dead" to="." method="_on_player_dead_body_entered"]

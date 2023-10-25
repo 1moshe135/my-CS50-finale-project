@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dogwkgaxgv62x"]
+
+[ext_resource type="Script" path="res://scripts/other/ui_manager.gd" id="1_vmwfa"]
+[ext_resource type="TileSet" uid="uid://cxib7gcqkoe4s" path="res://assets/engine recouces/tilemap.tres" id="2_3pqrc"]
+[ext_resource type="FontFile" uid="uid://dh24u8b6mmnok" path="res://assets/engine recouces/Minecraft.ttf" id="3_q5s82"]
+[ext_resource type="Texture2D" uid="uid://5qwlma43gh42" path="res://assets/textures/Untitled 10-19-2023 04-18-36.png" id="4_iwhlk"]
+[ext_resource type="AudioStream" uid="uid://dapb4m1r403sh" path="res://assets/sounds/new_meme_sounds/bruh.mp3" id="5_c8ksh"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_vmwfa")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_3pqrc")
+format = 2
+
+[node name="Time" type="Label" parent="."]
+offset_left = 446.0
+offset_top = 31.0
+offset_right = 530.0
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_q5s82")
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+
+[node name="Points" type="Label" parent="."]
+offset_left = 824.0
+offset_top = 16.0
+offset_right = 933.0
+offset_bottom = 51.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_q5s82")
+theme_override_font_sizes/font_size = 16
+text = "points: 000000"
+
+[node name="Lives" type="TextureRect" parent="."]
+offset_left = 927.0
+offset_top = 38.0
+offset_right = 1026.0
+offset_bottom = 54.0
+scale = Vector2(-1, 1)
+texture = ExtResource("4_iwhlk")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="live_loss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c8ksh")
+volume_db = -10.524
+
+[node name="loss" type="AudioStreamPlayer" parent="."]

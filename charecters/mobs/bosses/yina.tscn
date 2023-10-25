@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://djsp1it4u30kc"]
+
+[ext_resource type="Script" path="res://scripts/charecters/bosss/yina.gd" id="1_f1jku"]
+[ext_resource type="Texture2D" uid="uid://dg71acog6mka2" path="res://assets/textures/yina.png" id="2_ky8g3"]
+[ext_resource type="AudioStream" uid="uid://c0s2griqhuo1w" path="res://assets/sounds/new_meme_sounds/064-laser-thum_hYpSdXS.mp3" id="3_bxal2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnlhu"]
+atlas = ExtResource("2_ky8g3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxsx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnlhu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sul3j"]
+size = Vector2(46, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05453"]
+size = Vector2(56, 62)
+
+[node name="yina" type="CharacterBody2D"]
+script = ExtResource("1_f1jku")
+
+[node name="anime_yina" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lxsx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_sul3j")
+
+[node name="player_dead" type="Area2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dead"]
+position = Vector2(-1, 1)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_05453")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Yina" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ky8g3")
+
+[node name="laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bxal2")
+volume_db = -11.362
+
+[connection signal="body_entered" from="player_dead" to="." method="_on_player_dead_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

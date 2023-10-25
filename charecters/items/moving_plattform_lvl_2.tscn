@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drntfo6o1j5ad"]
+
+[ext_resource type="Script" path="res://scripts/charecters/moving_plattform_lvl_2.gd" id="1_jobd2"]
+[ext_resource type="TileSet" uid="uid://cxib7gcqkoe4s" path="res://assets/engine recouces/tilemap.tres" id="2_aupm6"]
+
+[node name="moving_plattform" type="Node2D"]
+scale = Vector2(2.61009, 2.12242)
+script = ExtResource("1_jobd2")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_aupm6")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 327680, 16, -1, 393216, 16, -65536, 393216, 16, -65535, 458752, 16)

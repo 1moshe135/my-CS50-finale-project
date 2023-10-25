@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2erecrf1dthl"]
+
+[ext_resource type="Script" path="res://scripts/charecters/player/da_shaul.gd" id="1_cpc2w"]
+[ext_resource type="SpriteFrames" uid="uid://dtn4tmqncooma" path="res://charecters/player/new_sprite_frames.tres" id="2_ooylc"]
+[ext_resource type="AudioStream" uid="uid://4cxmshrp7wi4" path="res://assets/sounds/new_meme_sounds/sad_violin.mp3" id="3_26t3i"]
+[ext_resource type="AudioStream" uid="uid://txlax2f6t3v" path="res://assets/sounds/new_meme_sounds/clash-royale-laugh.mp3" id="4_vovr8"]
+[ext_resource type="AudioStream" uid="uid://m2d3nha3ej8j" path="res://assets/sounds/new_meme_sounds/fart.wav" id="5_c8vka"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quuuh"]
+radius = 20.0
+height = 62.0
+
+[node name="DA SHAUL" type="CharacterBody2D" groups=["PlayerGroup"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_cpc2w")
+
+[node name="shaul anime" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_ooylc")
+animation = &"running"
+frame_progress = 0.0439831
+
+[node name="player collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_quuuh")
+
+[node name="loss_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_26t3i")
+volume_db = -12.381
+
+[node name="illay_stomped_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vovr8")
+volume_db = -19.644
+pitch_scale = 0.85
+
+[node name="jump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c8vka")
+volume_db = -25.0

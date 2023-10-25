@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://dp5is6j1sh55x"]
+
+[ext_resource type="Script" path="res://scripts/charecters/booger_shoother.gd" id="1_w6tbd"]
+[ext_resource type="Texture2D" uid="uid://f18d6gsjuina" path="res://assets/textures/IMG_6814.PNG" id="2_5xsq2"]
+[ext_resource type="AudioStream" uid="uid://cig4jvmo6h3us" path="res://assets/sounds/new_meme_sounds/booger-burp.mp3" id="3_55b7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fr8g"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxdbm"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmkke"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bhy"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lemfb"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epue7"]
+atlas = ExtResource("2_5xsq2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n21bv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fr8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxdbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmkke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3bhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lemfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epue7")
+}],
+"loop": false,
+"name": &"hnana_boy",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pchd"]
+size = Vector2(27.8713, 35.7597)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixqhs"]
+size = Vector2(29, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfxy8"]
+size = Vector2(50, 36)
+
+[node name="lil_kid" type="CharacterBody2D"]
+script = ExtResource("1_w6tbd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_n21bv")
+animation = &"hnana_boy"
+frame = 4
+frame_progress = 1.0
+
+[node name="wall_check" type="RayCast2D" parent="."]
+target_position = Vector2(-16, 0)
+collide_with_areas = true
+
+[node name="wall_check2" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -2)
+rotation = 3.14159
+scale = Vector2(1.29165, 0.922824)
+shape = SubResource("RectangleShape2D_1pchd")
+
+[node name="kid_dead" type="Area2D" parent="."]
+position = Vector2(0, -15)
+collision_layer = 3
+collision_mask = 3
+
+[node name="kid_dead_collision" type="CollisionShape2D" parent="kid_dead"]
+position = Vector2(4, -26)
+shape = SubResource("RectangleShape2D_ixqhs")
+
+[node name="player_dead" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dead"]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_bfxy8")
+
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="burp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_55b7g")
+volume_db = -5.0
+pitch_scale = 1.2
+autoplay = true
+max_distance = 350.0
+attenuation = 2.37842
+
+[connection signal="body_entered" from="kid_dead" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="player_dead" to="." method="_on_player_dead_body_entered"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

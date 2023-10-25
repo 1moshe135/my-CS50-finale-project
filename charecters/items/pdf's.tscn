@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://doylgmneb2r2d"]
+
+[ext_resource type="Script" path="res://scripts/other/pdf's.gd" id="1_ykesw"]
+[ext_resource type="Texture2D" uid="uid://dmd3mwnsag0hl" path="res://assets/textures/pdf.png" id="2_tbpmn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o211u"]
+atlas = ExtResource("2_tbpmn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lscr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o211u")
+}],
+"loop": true,
+"name": &"muzic",
+"speed": 22.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejs68"]
+size = Vector2(16, 21)
+
+[node name="pdf" type="Area2D"]
+z_index = 2
+script = ExtResource("1_ykesw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_4lscr")
+animation = &"muzic"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ejs68")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="kill_player"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
