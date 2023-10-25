@@ -2,14 +2,14 @@
 #### Video Demo:  <https://youtu.be/k9QzfovHceI>
 #### Link for web playing at itch.io: <https://1moshe135.itch.io/my-cs-50-finale-project>
 
-#### * sorry if the git looks short. i spent a lot of time to write a 6 page one, but because of reloading the changes weren't saved. :(
+* sorry if this readme looks short. i spent a lot of time to write a 6 page one, but because of reloading the changes weren't saved. :(
 
 ## IMPORTANT!
-*the game works only on non-mac computers and require keyboard!
-*the assets.zip file need to be extructed before downloading the game in order for it to work!
-*the game is much better with sound on! play only if you are ok with getting fraustrated >:3
+* the game works only on non-mac computers and require keyboard!
+* the assets.zip file need to be extructed before downloading the game in order for it to work!
+* the game is much better with sound on! play only if you are ok with getting fraustrated >:3
 
-## project background
+## BACKGROUND
 
 Hello! I'm Moshe, and this is my CS-50 X finale project!
 For my project, I decided to create something I've been wanting to do with a friend for quite a while. It all started when I became a programming teacher, and I didn't feel assured that I had all the tools I needed. That's when my journey began.
@@ -21,15 +21,15 @@ To play this game, simply press the play button. Thank you, and this marks the c
 
 recommended controls:
 
-*to move right : D
+* to move right : D
 
-*to move left:  A
+* to move left:  A
 
-*to jump: mouse_click
+* to jump: mouse_click
 
 please enjoy the game and comment to share your thoughts!!
 
-## file exploration
+## FILES
 
 * scenes - has all the static scenes, AKA levels, boss fights ..
 * assets - has all the assets and recources for the game. textures, images, tilesets, sounds, and more
@@ -42,7 +42,7 @@ please enjoy the game and comment to share your thoughts!!
 * (also includes the godot logo because of the engine.)
 
 
-## code
+## CODE
 #### this project was build in the godot 4 engine with the language gd.script which is like the python learned in the course.
 ### 'charecters' -> 'player' -> 'DA SHAUL.tscn' OR 'scripts' -> 'charecters' -> 'player' -> 'da_shaul.gd'
 
