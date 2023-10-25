@@ -1,6 +1,8 @@
 # my CS50 finale project
+#### Video Demo:  <https://youtu.be/k9QzfovHceI>
+#### Link for web playing at itch.io: <https://1moshe135.itch.io/my-cs-50-finale-project>
 
-* sorry if the git looks short. i spent a lot of time to write a 6 page one, but because of reloading the changes weren't saved. :(
+#### * sorry if the git looks short. i spent a lot of time to write a 6 page one, but because of reloading the changes weren't saved. :(
 
 ## IMPORTANT!
 *the game works only on non-mac computers and require keyboard!
@@ -135,7 +137,7 @@ this it the cool death animation:
 
 this is when he jumps on a mob and gets a double jump:
           
-      func double_jump():
+    func double_jump():
       	velocity.y = JUMP_VELOCITY
       	$illay_stomped_sound.play()
 
